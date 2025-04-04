@@ -132,7 +132,7 @@ import conection from "../utils/database.js";
       const [result] = await conection.query(`UPDATE productos SET ${comando} WHERE id = ?`, [id]);
       
       if (result.affectedRows == 0) throw new Error("Producto no encontrado");
-
+      return { id, nombre, descripcion, precio, categoria_id };
     } catch (error) {
       throw new Error("Error al actualizar el producto");
     }

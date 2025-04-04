@@ -1,5 +1,5 @@
 import { Producto } from "../models/Producto.js";
-const tabla="productos";
+// const tabla="productos";
 // class ProductoController
 // {
 
@@ -87,17 +87,18 @@ class ProductoController {
       }
     }
   
-    static actualizarproductos = async (req, res) =>
-    {
+  static actualizarproductos = async (req, res) =>
+  {
+    try {
       const { id } = req.params;
-      const { nombre, descripcion,precio,categoria_id } = req.body;
-      try {
-        const OBJproductos = new Producto()
-        const productos = await OBJproductos.update(nombre, descripcion, precio, categoria_id, id);
-        res.json(productos)
-      } catch (error) {
-        res.status(500).json({ error: error.message});
-      }
+      const { nombre, descripcion, precio, categoria_id } = req.body;
+    
+      const OBJProducto = new Producto();
+      const producto = await OBJProducto.update(nombre, descripcion, precio, categoria_id, id);
+      res.status(201).json(producto);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
 
     static actualizarParcialproductos = async (req, res) => {
