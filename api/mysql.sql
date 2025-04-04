@@ -1,6 +1,6 @@
 #Creacion de usuario
-create user 'edixon_adso2894667'@'localhost' identified by "Aprendiz2024";
+create user 'Helder_adso2894667'@'localhost' identified by "Aprendiz2025";
 #creando la base de datos de node.js
 create database node_adso2894667;
 #dandole privilegios
-grant all on node_adso2894667.* to edixon_adso2894667@localhost;
+grant all on node_adso2894667.* to Helder_adso2894667@localhost;
