@@ -4,6 +4,9 @@ import  {validarCategoria} from "../midelware/validateCategory.js"
 
 
 const router = express.Router();
+
+router.get('/:id', CategoriaController.getCategoriasById);
+
 router.get("/", CategoriaController.getAllCategoria);
 
 router.post("/",validarCategoria, CategoriaController.createCategoria);

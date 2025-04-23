@@ -5,6 +5,15 @@ export class Categoria {
   //   this.nombre = nombre;
   //   this.descripcion = descripcion;
   // }
+  async getById(id) {
+    try {
+      const [rows] = await connection.query("SELECT * FROM categorias WHERE id = ?",[id]);
+      return rows;
+    } catch (error) {
+      throw new Error("ERROR: al obtener categorias");
+    }
+  }
+
   async getAll(tabla) {
     try {
       const [rows] = await conection.query(`SELECT * FROM ${tabla}`);
@@ -13,6 +22,7 @@ export class Categoria {
       throw new Error(`Error al obtener ${tabla}`);
     }
   }
+  
   async create(tabla,nombre, descripcion) {
     try {            
         const [result] = await conection.query("INSERT INTO categorias (nombre, descripcion) VALUES (?,?)", [nombre, descripcion]);

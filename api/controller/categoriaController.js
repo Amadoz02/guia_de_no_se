@@ -2,6 +2,12 @@ import {Categoria} from "../models/Categoria.js";
 const tabla="categorias"
 class CategoriaController
 {
+  static getCategoriasById = async (req, res) => {
+    const { id } = req.params;
+    const OBJCategoria = new Categoria();
+    const categoria = await OBJCategoria.getById(id);
+    res.json(categoria);
+  }
 
   static getAllCategoria = async (req,res) => 
   {
